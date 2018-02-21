@@ -1,10 +1,10 @@
 {
-  "name": "angular-webpack-config-interceptor",
-  "version": "0.0.1",
+  "name": "ngw",
+  "version": "0.0.8",
   "description": "Provides an opportunity to overload webpack config for angular-cli applications",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "publish": "tsc"
   },
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   },
   "author": "",
   "bin": {
-    "ngw": "./ngw"
+    "ngw": "./bin/ngw"
   },
   "license": "MIT",
   "bugs": {
@@ -20,6 +20,18 @@
   },
   "homepage": "https://github.com/ivanpadavan/angular-webpack-config-interceptor#readme",
   "peerDependencies": {
-    "@angular/cli": "^1.0.0"
+    "@angular/cli": "^1.0.0",
+    "@types/node": "*",
+    "@types/webpack": "^3.0.0",
+    "typescript": "^2.0.0"
+  },
+  "dependencies": {
+    "ts-node": "^5.0.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.1",
+    "@types/node": "^9.4.6",
+    "@types/webpack": "^3.0.0",
+    "typescript": "^2.7.2"
   }
 }

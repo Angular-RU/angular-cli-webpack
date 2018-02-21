@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+switch (process.argv[2]) {
+    case '--set-up':
+        require('../src/set-up');
+        break;
+    default:
+
+        var entryPointPath = require.resolve('../src/index');
+        var tsNodePath = require.resolve('../node_modules/ts-node/dist/bin');
+
+        require('child_process').execSync(
+            [tsNodePath, entryPointPath].concat(process.argv.slice(2)).join(' '),
+            {stdio: 'inherit'}
+        );
+}

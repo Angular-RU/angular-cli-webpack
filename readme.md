@@ -10,12 +10,29 @@ Run in cli project root (where package.json is)<br>
 
 Last command makes two things:
 1) Changes scripts in package.json that starts from `ng ` to `ngw `
-2) Creates file `ngw-config.ts` in project root where you can redefine `webpack.Configuration` used by `@angular/cli`
+2) Creates file `ngw.config.ts` in project root where you can redefine `webpack.Configuration` used by `@angular/cli`
 
 You may like to do `npm i -D @types/webpack` for better experience.
 
-## Roadmap
+## Example
+This little piece of code in your ngw.config [removes unused selectors from your CSS:](https://github.com/webpack-contrib/purifycss-webpack)
+```typescript
+export default function(config: webpack.Configuration, options: WebpackConfigOptions<BuildOptions>, command = process.argv[2]) {
 
+    config.plugins.push(
+      new PurifyCSSPlugin({
+        paths: glob.sync(path.join(__dirname, '**/*.html'))
+      })
+    );
+
+    return config;
+}
+```
+
+## Caution
+For complex cases it's more appropriate to use `ng eject` command. Default building process could change significanlty in further `@angular/cli` releases so your customization could break (or became broken).
+
+## Roadmap
 - [ ] Common recepies
 - [ ] Ability to write/publish recepies
 - [ ] Isolated webpack changes

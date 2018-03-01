@@ -1,6 +1,6 @@
 {
   "name": "ngw",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Provides an opportunity to overload webpack config for angular-cli applications",
   "main": "src/index.js",
   "scripts": {

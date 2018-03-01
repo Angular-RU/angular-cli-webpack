@@ -13,3 +13,10 @@ Last command makes two things:
 2) Creates file `ngw-config.ts` in project root where you can redefine `webpack.Configuration` used by `@angular/cli`
 
 You may like to do `npm i -D @types/webpack` for better experience.
+
+## Roadmap
+
+- [ ] Common recepies
+- [ ] Ability to write/publish recepies
+- [ ] Isolated webpack changes
+- [ ] Separate Dev and Prod configs

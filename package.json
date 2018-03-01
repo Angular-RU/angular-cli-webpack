@@ -1,6 +1,6 @@
 {
   "name": "ngw",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Provides an opportunity to overload webpack config for angular-cli applications",
   "main": "src/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ivanpadavan/angular-webpack-config-interceptor.git"
+    "url": "git+https://github.com/Angular-RU/ngw.git"
   },
   "author": "",
   "bin": {
@@ -16,9 +16,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ivanpadavan/angular-webpack-config-interceptor/issues"
+    "url": "https://github.com/Angular-RU/ngw/issues"
   },
-  "homepage": "https://github.com/ivanpadavan/angular-webpack-config-interceptor#readme",
+  "homepage": "https://github.com/Angular-RU/ngw#readme",
   "peerDependencies": {
     "@angular/cli": "^1.0.0",
     "@types/node": "*",

@@ -1,5 +1,5 @@
 # ngw
-This package provides an opportunity to modify @angular/cli projrct's webpack configuration without ["ejecting"](https://github.com/angular/angular-cli/wiki/eject).
+This package provides an opportunity to modify @angular/cli project's webpack configuration without ["ejecting"](https://github.com/angular/angular-cli/wiki/eject).
 
 ## Usage:
 - **Installation**<br>

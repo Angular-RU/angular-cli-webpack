@@ -17,20 +17,18 @@ You may like to do `npm i -D @types/webpack` for better experience.
 ## Example
 This little piece of code in your ngw.config [removes unused selectors from your CSS:](https://github.com/webpack-contrib/purifycss-webpack)
 ```typescript
-export default function(config: webpack.Configuration, options: WebpackConfigOptions<BuildOptions>, command = process.argv[2]) {
-
+export default function(config: webpack.Configuration) {
     config.plugins.push(
       new PurifyCSSPlugin({
         paths: glob.sync(path.join(__dirname, '**/*.html'))
       })
     );
-
     return config;
 }
 ```
 
 ## Caution
-For complex cases it's more appropriate to use `ng eject` command. Default building process could change significanlty in further `@angular/cli` releases so your customization could break (or became broken).
+For complex cases it's more appropriate to use `ng eject` command. Default building process could be changed significanlty in further `@angular/cli` releases so your customization could break (or became broken).
 
 ## Roadmap
 - [ ] Common recepies

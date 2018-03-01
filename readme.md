@@ -16,7 +16,16 @@ You may like to do `npm i -D @types/webpack` for better experience.
 
 ## Example
 This little piece of code in your ngw.config [removes unused selectors from your CSS:](https://github.com/webpack-contrib/purifycss-webpack)
+
 ```typescript
+import * as webpack from 'webpack';
+import { WebpackConfigOptions } from '@angular/cli/models/webpack-config';
+import { BuildOptions } from '@angular/cli/models/build-options';
+
+const PurifyCSSPlugin = require('purifycss-webpack');
+const path = require('path');
+const glob = require('glob');
+
 export default function(config: webpack.Configuration) {
     config.plugins.push(
       new PurifyCSSPlugin({

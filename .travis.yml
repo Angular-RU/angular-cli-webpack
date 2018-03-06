@@ -1,0 +1,12 @@
+language: node_js
+sudo: false
+node_js:
+  - "9.3"
+install:
+  - npm install
+script:
+  - npm run lint
+  - npm test
+  - npm build
+after_success:
+  - npm run coverage

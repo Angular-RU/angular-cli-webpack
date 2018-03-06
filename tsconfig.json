@@ -2,7 +2,19 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "declaration": false
+    "lib": [
+      "es2015",
+      "es2017",
+      "dom"
+    ],
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "declaration": true,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "experimentalDecorators": true,
+    "outDir": "./lib",
+    "moduleResolution": "node"
   },
   "exclude": [
     "node_modules",

@@ -1,10 +1,9 @@
 import * as path from 'path';
 import { NgCliWebpackConfig } from '@angular/cli/models/webpack-config';
 
-
 NgCliWebpackConfig.prototype.buildConfigInner = NgCliWebpackConfig.prototype.buildConfig;
 
-NgCliWebpackConfig.prototype.buildConfig = function() {
+NgCliWebpackConfig.prototype.buildConfig = function () {
     const config = this.buildConfigInner();
 
     try {
@@ -17,8 +16,7 @@ NgCliWebpackConfig.prototype.buildConfig = function() {
     }
 };
 
-require.cache[
-    require.resolve('@angular/cli/models/webpack-config')
-].NgCliWebpackConfig = NgCliWebpackConfig;
+const webpackConfig = require.resolve('@angular/cli/models/webpack-config');
+require.cache[webpackConfig].NgCliWebpackConfig = NgCliWebpackConfig;
 
 require('@angular/cli/bin/ng');

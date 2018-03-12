@@ -22,14 +22,18 @@ to configure your webpack for dev and prod mode (ngw.config.ts)
 
 ```typescript
 import * as webpack from 'webpack';
-import { WebpackConfigOptions } from '@angular/cli/models/webpack-config';
+import { WebpackConfigOptions as ConfigOptions } from '@angular/cli/models/webpack-config';
 import { BuildOptions } from '@angular/cli/models/build-options';
 
-export default function(config: webpack.Configuration, options: WebpackConfigOptions<BuildOptions>, command = process.argv[2]) {
-    console.log(config);
+export type Configuration = webpack.Configuration;
+const DEFAULT_COMMAND = process.argv[2];
+
+export default function (config: Configuration, options: ConfigOptions<BuildOptions>, argv) {
+    console.log('For modify webpack build, you can usage ngw.config.ts');
+    const command = argv || DEFAULT_COMMAND;
+
     return config;
 }
-
 ```
 
 Last command installation (ngw --set-up) makes two things:

@@ -67,6 +67,23 @@ export default function(config: webpack.Configuration) {
 }
 ```
 
+#### Prod and dev mode modifications (ngw.config.ts)
+
+```ts
+export default function(config, options) {
+  //common config modification
+  ...
+  switch(options.buildOptions.enviroment) {
+    case 'prod':
+      config = productionModificationsMerged(config);
+      break
+    case 'dev':
+      //etc
+  }
+}
+```
+
+
 ## Caution
 
 For complex cases it's more appropriate to use `ng eject` command. Default building process could be changed significanlty in further `@angular/cli` releases so your customization could break (or became broken).

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 switch (process.argv[2]) {
     case '--set-up':
-        require('../src/set-up');
+        require('../lib/set-up');
         break;
     default:
         
         const execSync = require('child_process').execSync;
-        const entryPointPath = require.resolve('../src/index');
-        const tsNodePath = require.resolve('../node_modules/ts-node/dist/bin');
+        const entryPointPath = require.resolve('../lib/index');
+        const tsNodePath = require.resolve('ts-node/dist/bin');
         const ngCommandArgs = process.argv.slice(2);
         const executionPoint = [tsNodePath, entryPointPath].concat(ngCommandArgs).join(' ');
         

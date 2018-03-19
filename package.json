@@ -8,8 +8,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "echo test",
     "coverage": "echo coverage",
-    "build": "tsc",
-    "publish": "tsc"
+    "build": "rimraf ./lib/* && tsc"
   },
   "repository": {
     "type": "git",
@@ -37,8 +36,9 @@
     "@angular/cli": "^1.7.1",
     "@types/node": "^9.4.6",
     "@types/webpack": "^3.0.0",
-    "typescript": "^2.7.2",
+    "rimraf": "^2.6.2",
     "tslint": "^5.8.0",
-    "tslint-config-standard": "^7.0.0"
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.7.2"
   }
 }

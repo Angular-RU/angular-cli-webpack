@@ -11,7 +11,8 @@ NgCliWebpackConfig.prototype.buildConfig = function () {
         const interceptor = require(interceptorPath).default;
         return interceptor(config, this.wco);
     } catch (e) {
-        if (e.message.toString().indexOf('Cannot find module ') + 1) {
+        console.dir(e);
+        if (e.code === 'MODULE_NOT_FOUND') {
             console.warn('ngw.config file is not found at serving directory. Starting common build');
             return config;
         } else { throw e; }

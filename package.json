@@ -1,6 +1,6 @@
 {
   "name": "ngw",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Provides an opportunity to overload webpack config for angular-cli applications",
   "main": "lib/index.js",
   "typings": "lib/index",
@@ -8,7 +8,8 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "echo test",
     "coverage": "echo coverage",
-    "build": "rimraf ./lib/* && tsc"
+    "build": "tsc",
+    "publish": "tsc"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,6 @@
     "@angular/cli": "^1.7.1",
     "@types/node": "^9.4.6",
     "@types/webpack": "^3.0.0",
-    "rimraf": "^2.6.2",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
     "typescript": "^2.7.2"

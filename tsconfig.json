@@ -9,7 +9,7 @@
     ],
     "noImplicitAny": false,
     "sourceMap": false,
-    "declaration": true,
+    "declaration": false,
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": false,
     "experimentalDecorators": true,

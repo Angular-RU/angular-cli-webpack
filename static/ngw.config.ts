@@ -1,13 +1,25 @@
 import * as webpack from 'webpack';
-import { WebpackConfigOptions as ConfigOptions } from '@angular/cli/models/webpack-config';
-import { BuildOptions } from '@angular/cli/models/build-options';
+import { Path } from '@angular-devkit/core';
+import { NormalizedBrowserBuilderSchema } from '@angular-devkit/build-angular';
 
-export type Configuration = webpack.Configuration;
-const DEFAULT_COMMAND = process.argv[2];
+export type WebpackOptions<T = NormalizedBrowserBuilderSchema> = {
+    root: Path,
+    projectRoot: Path,
+    options: T;
+};
 
-export default function (config: Configuration, options: ConfigOptions<BuildOptions>, argv) {
-    console.log('For modify webpack build, you can usage ngw.config.ts');
-    const command = argv || DEFAULT_COMMAND;
+const command = process.argv[2].toLowerCase();
 
+export default function (config: webpack.Configuration, options: WebpackOptions) {
+    switch (command) {
+        case 'test':
+            console.log('Test configuration is running');
+            break;
+        default:
+            console.log('Test configuration is running');
+            break;
+    }
+
+    console.log('To modify webpack build, you can use ngw.config.ts');
     return config;
 }

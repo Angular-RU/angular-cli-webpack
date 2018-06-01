@@ -12,9 +12,9 @@
     "declaration": false,
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": false,
-    "experimentalDecorators": true,
     "outDir": "./lib",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",

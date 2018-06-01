@@ -1,6 +1,6 @@
 {
   "name": "ngw",
-  "version": "0.0.11",
+  "version": "0.0.16",
   "description": "Provides an opportunity to overload webpack config for angular-cli applications",
   "main": "lib/index.js",
   "typings": "lib/index",
@@ -9,7 +9,7 @@
     "test": "echo test",
     "coverage": "echo coverage",
     "build": "tsc",
-    "publish": "tsc"
+    "prepublishOnly:": "tsc"
   },
   "repository": {
     "type": "git",
@@ -25,9 +25,8 @@
   },
   "homepage": "https://github.com/Angular-RU/ngw#readme",
   "peerDependencies": {
-    "@angular/cli": "^1.0.0",
     "@types/node": "*",
-    "@types/webpack": "^3.0.0",
+    "@types/webpack": "*",
     "typescript": "^2.0.0"
   },
   "dependencies": {

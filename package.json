@@ -1,6 +1,6 @@
 {
   "name": "ngw",
-  "version": "0.0.16",
+  "version": "5.0.0",
   "description": "Provides an opportunity to overload webpack config for angular-cli applications",
   "main": "lib/index.js",
   "typings": "lib/index",
@@ -9,7 +9,7 @@
     "test": "echo test",
     "coverage": "echo coverage",
     "build": "tsc",
-    "prepublishOnly:": "tsc"
+    "prepublishOnly": "tsc"
   },
   "repository": {
     "type": "git",

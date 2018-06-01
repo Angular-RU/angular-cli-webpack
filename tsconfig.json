@@ -13,7 +13,8 @@
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": false,
     "outDir": "./lib",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",

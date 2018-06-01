@@ -1,30 +1,40 @@
 import * as path from 'path';
-import { NgCliWebpackConfig } from '@angular/cli/models/webpack-config';
-import { WebpackTestConfig } from '@angular/cli/models/webpack-test-config';
-import { XI18nWebpackConfig } from '@angular/cli/models/webpack-xi18n-config';
+import { BrowserBuilder } from '@angular-devkit/build-angular/src/browser/index';
+import { KarmaBuilder } from '@angular-devkit/build-angular/src/karma/index';
+import { ExtractI18nBuilder } from '@angular-devkit/build-angular/src/extract-i18n/index';
+import { WebpackOptions } from '../static/ngw.config';
 
 const configClasses = {
-    'webpack-config': NgCliWebpackConfig,
-    'webpack-test-config': WebpackTestConfig,
-    'webpack-xi18n-config': XI18nWebpackConfig
+    'browser': BrowserBuilder,
+    'karma': KarmaBuilder,
+    'extract-i18n': ExtractI18nBuilder
 };
 const configClassNames = {
-    'webpack-config': 'NgCliWebpackConfig',
-    'webpack-test-config': 'WebpackTestConfig',
-    'webpack-xi18n-config': 'WebpackTestConfig'
+    'browser': 'BrowserBuilder',
+    'karma': 'KarmaBuilder',
+    'extract-i18n': 'ExtractI18nBuilder'
 };
 
 Object.keys(configClasses).forEach(buildConfig);
 
 function buildConfig(variant: string) {
-    configClasses[variant].prototype.buildConfigInner = configClasses[variant].prototype.buildConfig;
-    configClasses[variant].prototype.buildConfig = function () {
-        const config = this.buildConfigInner();
+    const methodName = configClasses[variant].prototype.hasOwnProperty('_buildWebpackConfig')
+        ? '_buildWebpackConfig'
+        : 'buildWebpackConfig';
+
+    configClasses[variant].prototype.buildConfigInner = configClasses[variant].prototype[methodName];
+    configClasses[variant].prototype[methodName] = configClasses[variant].prototype.buildConfig = function (...args) {
+        const config = this.buildConfigInner(...args);
 
         try {
             const interceptorPath = path.resolve('./ngw.config');
             const interceptor = require(interceptorPath).default;
-            return interceptor(config, this.wco);
+            const options: WebpackOptions = {
+                root: args[0],
+                projectRoot: args[1],
+                options: args[-1]
+            };
+            return interceptor(config, ...args);
         } catch (e) {
             console.dir(e);
             if (e.code === 'MODULE_NOT_FOUND') {
@@ -35,7 +45,7 @@ function buildConfig(variant: string) {
             }
     };
 
-    const webpackConfig = require.resolve(`@angular/cli/models/${variant}`);
+    const webpackConfig = require.resolve(`@angular-devkit/build-angular/src/${variant}/index`);
     require.cache[webpackConfig][configClassNames[variant]] = configClasses[variant];
 }
 

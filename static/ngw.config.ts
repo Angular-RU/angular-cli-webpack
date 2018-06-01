@@ -1,22 +1,23 @@
 import * as webpack from 'webpack';
-import { WebpackConfigOptions } from '@angular/cli/models/webpack-config';
-import { BuildOptions } from '@angular/cli/models/build-options';
-import { WebpackTestOptions } from '@angular/cli/models/webpack-test-config';
-import { XI18WebpackOptions } from '@angular/cli/models/webpack-xi18n-config';
+import { Path } from '@angular-devkit/core';
+import { NormalizedBrowserBuilderSchema } from '@angular-devkit/build-angular';
 
-export type WebpackOptions = WebpackConfigOptions<BuildOptions> | WebpackTestOptions | XI18WebpackOptions;
+export type WebpackOptions<T = NormalizedBrowserBuilderSchema> = {
+    root: Path,
+    projectRoot: Path,
+    options: T;
+};
 
 const command = process.argv[2].toLowerCase();
-const isTest = (o: WebpackOptions): o is WebpackTestOptions => command === 'test';
-const isI18n = (o: WebpackOptions): o is XI18WebpackOptions => o['locale'];
 
 export default function (config: webpack.Configuration, options: WebpackOptions) {
-    if (isTest(options)) {
-        console.log('Test configuration is running');
-    } else if (isI18n(options)) {
-        console.log('This build uses i18n');
-    } else {
-        console.log('Common build is running');
+    switch (command) {
+        case 'test':
+            console.log('Test configuration is running');
+            break;
+        default:
+            console.log('Test configuration is running');
+            break;
     }
 
     console.log('To modify webpack build, you can use ngw.config.ts');

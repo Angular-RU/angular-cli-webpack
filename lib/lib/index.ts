@@ -1,16 +1,19 @@
 import * as path from 'path';
 import { BrowserBuilder } from '@angular-devkit/build-angular/src/browser/index';
+import { ServerBuilder } from '@angular-devkit/build-angular/src/server/index';
 import { KarmaBuilder } from '@angular-devkit/build-angular/src/karma/index';
 import { ExtractI18nBuilder } from '@angular-devkit/build-angular/src/extract-i18n/index';
 import { WebpackOptions } from '../static/ngw.config';
 
 const configClasses = {
     'browser': BrowserBuilder,
+    'server': ServerBuilder,
     'karma': KarmaBuilder,
     'extract-i18n': ExtractI18nBuilder
 };
 const configClassNames = {
     'browser': 'BrowserBuilder',
+    'server': 'ServerBuilder',
     'karma': 'KarmaBuilder',
     'extract-i18n': 'ExtractI18nBuilder'
 };

@@ -8,8 +8,7 @@
 ## Installation
 For angular 6:
 ```bash
-$ npm i -g @angular/cli # before usage you need install cli
-$ ng new my-project && cd my-project # go into any project on angular
+$ npx -p @angular/cli ng new my-project && cd my-project # create new Angular CLI project
 $ npm i -D ngw # installing an improved cli-eject
 $ ./node_modules/.bin/ngw --set-up # run via terminal in project root
 Set up went successfully!

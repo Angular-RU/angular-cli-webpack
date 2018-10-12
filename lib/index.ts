@@ -35,7 +35,7 @@ function buildConfig(variant: string) {
             const options: WebpackOptions = {
                 root: args[0],
                 projectRoot: args[1],
-                options: args[-1]
+                options: args[args.length - 1]
             };
             return interceptor(config, ...args);
         } catch (e) {

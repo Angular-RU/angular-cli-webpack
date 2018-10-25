@@ -44,7 +44,7 @@ export default function(config) {
     return config;
 }
 ```
-#### Debugging
+## Debugging
 You may like to debug your configuration. 
 This can be done with [ndb](https://github.com/GoogleChromeLabs/ndb) package.
 1) Make sure that your development environment meets the requirements of `ndb`
@@ -52,7 +52,7 @@ This can be done with [ndb](https://github.com/GoogleChromeLabs/ndb) package.
 3) Add `debugger` keyword in `ngw.config.ts`
 4) `ndb npm run start`
 
-#### Prod and dev mode modifications (ngw.config.ts)
+## Prod and dev mode modifications (ngw.config.ts)
 ```typescript
 
 const isProduction = process.argv.indexOf('--prod') !== -1;

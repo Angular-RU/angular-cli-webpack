@@ -35,9 +35,9 @@ function buildConfig(variant: string) {
             const options: WebpackOptions = {
                 root: args[0],
                 projectRoot: args[1],
-                options: args[-1]
+                options: args[args.length - 1]
             };
-            return interceptor(config, ...args);
+            return interceptor(config, options);
         } catch (e) {
             console.dir(e);
             if (e.code === 'MODULE_NOT_FOUND') {

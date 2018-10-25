@@ -26,11 +26,11 @@
   "homepage": "https://github.com/Angular-RU/ngw#readme",
   "peerDependencies": {
     "@types/node": "*",
-    "@types/webpack": "*",
-    "typescript": "^3.0.0"
+    "@types/webpack": "*"
   },
   "dependencies": {
-    "ts-node": "^7.0.1"
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.6.7",
@@ -38,7 +38,6 @@
     "@types/node": "^9.4.6",
     "@types/webpack": "^3.0.0",
     "tslint": "^5.8.0",
-    "tslint-config-standard": "^7.0.0",
-    "typescript": "^2.7.2"
+    "tslint-config-standard": "^7.0.0"
   }
 }

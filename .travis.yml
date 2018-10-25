@@ -1,12 +1,25 @@
+os:
+  - linux
 language: node_js
-sudo: false
+sudo: true
 node_js:
-  - "9.3"
+  - "10.12"
 install:
-  - npm install
+  - npm i
+  - npm run build
+  - rm -rf ./node_modules
+  - npm i --production
+before_script:
+  - npm i -g @angular/cli
+  - set -e
+  - cp -rf "$PWD" ~/ngw
+  - cd ~
+  - ng new test-project --skip-install --defaults=true
+  - cd test-project
+  - npm i
+  - cp -rf "../ngw" "./node_modules/ngw"
+  - ln -sr "./node_modules/ngw/bin/ngw" "./node_modules/.bin/ngw"
 script:
-  - npm run lint
-  - npm test
-  - npm build
-after_success:
-  - npm run coverage
+  - "grep 'angular.*: \"' package-lock.json | sort -u"
+  - ./node_modules/.bin/ngw --set-up
+  - npm run build | fgrep ngw.config

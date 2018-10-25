@@ -18,7 +18,7 @@ For angular 5 use `npm i -D ngw@angular5`
 Last command installation (ngw --set-up) makes three things:
 1) Changes scripts in package.json that starts from `ng ` to `ngw `
 2) Creates file `ngw.config.ts` in project root where you can redefine `webpack.Configuration` used by `@angular/cli`
-3) Sets `complierOptions.module = "commonjs"` property in `tsconfig.json`
+3) Sets `compilerOptions.module = "commonjs"` property in `tsconfig.json`
 
 So just make changes to the webpack config in appeared `ngw.config.ts`
 
@@ -62,7 +62,7 @@ export default function(config, options) {
   ...
   config = isProduction
     ? productionModificationsMerged(config)
-    : devModificationsChane(config);
+    : devModificationsMerged(config);
   }
   ...
 }

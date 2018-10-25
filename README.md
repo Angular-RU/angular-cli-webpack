@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Angular-RU/angular-cli-webpack/badge.svg?branch=master)](https://coveralls.io/github/Angular-RU/angular-cli-webpack?branch=master) [![Coverage Status](https://img.shields.io/npm/dt/ngw.svg)](https://npm-stat.com/charts.html?package=ngw&from=2017-01-12)
 
 ## Installation
-For angular 6:
+For angular 6/7:
 ```bash
 $ npx -p @angular/cli ng new my-project && cd my-project # create new Angular CLI project
 $ npm i -D ngw # installing an improved cli-eject
@@ -15,9 +15,10 @@ Set up went successfully!
 ```
 For angular 5 use `npm i -D ngw@angular5`
 ## Usage:
-Last command installation (ngw --set-up) makes two things:
+Last command installation (ngw --set-up) makes three things:
 1) Changes scripts in package.json that starts from `ng ` to `ngw `
 2) Creates file `ngw.config.ts` in project root where you can redefine `webpack.Configuration` used by `@angular/cli`
+3) Sets `complierOptions.module = "commonjs"` property in `tsconfig.json`
 
 So just make changes to the webpack config in appeared `ngw.config.ts`
 
@@ -43,24 +44,26 @@ export default function(config) {
     return config;
 }
 ```
+#### Debugging
+You may like to debug your configuration. 
+This can be done with [ndb](https://github.com/GoogleChromeLabs/ndb) package.
+1) Make sure that your development environment meets the requirements of `ndb`
+2) `npm i -g ndb`
+3) Add `debugger` keyword in `ngw.config.ts`
+4) `ndb npm run start`
 
 #### Prod and dev mode modifications (ngw.config.ts)
-
 ```typescript
+
+const isProduction = process.argv.indexOf('--prod') !== -1;
+
 export default function(config, options) {
   //common config modification
   ...
-  switch(options.buildOptions.enviroment) {
-    case 'prod':
-      config = productionModificationsMerged(config);
-      break
-    case 'dev':
-      //etc
+  config = isProduction
+    ? productionModificationsMerged(config)
+    : devModificationsChane(config);
   }
+  ...
 }
 ```
-
-
-## Caution
-
-For complex cases it's more appropriate to use `ng eject` command. Default building process could be changed significanlty in further `@angular/cli` releases so your customization could break (or became broken).

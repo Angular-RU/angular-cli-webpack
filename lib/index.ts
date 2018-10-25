@@ -37,7 +37,7 @@ function buildConfig(variant: string) {
                 projectRoot: args[1],
                 options: args[args.length - 1]
             };
-            return interceptor(config, ...args);
+            return interceptor(config, options);
         } catch (e) {
             console.dir(e);
             if (e.code === 'MODULE_NOT_FOUND') {

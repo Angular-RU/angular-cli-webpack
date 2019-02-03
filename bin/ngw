@@ -11,7 +11,7 @@ switch (process.argv[2]) {
         const commandArgs = process.argv.slice(2).join(" ");
 
         const command = process.platform === "win32"
-            ? `node "${tsNodePath}" "-O" "{\"module\":\"commonjs\"} "${entryPointPath}" ${commandArgs}"`
+            ? `node "${tsNodePath}" "-O" "{\"module\":\"commonjs\"}" "${entryPointPath}" ${commandArgs}"`
             : `node ${tsNodePath} -O '{"module":"commonjs"}' ${entryPointPath} ${commandArgs}`
 
         execSync(command, {stdio: 'inherit'});

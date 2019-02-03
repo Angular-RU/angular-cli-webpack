@@ -8,9 +8,8 @@ switch (process.argv[2]) {
         const execSync = require('child_process').execSync;
         const entryPointPath = require.resolve('../lib/index');
         const tsNodePath = require.resolve('ts-node/dist/bin');
-        const ngCommandArgs = process.argv.slice(2);
-        const executionPoint = [tsNodePath, entryPointPath].concat(ngCommandArgs).join('" "');
-        
-        execSync(`node "${executionPoint}"`, {stdio: 'inherit'});
+        const commandArgs = process.argv.slice(2).join(" ");
+
+        execSync(`node ${tsNodePath} -O '{"module":"commonjs"}' ${entryPointPath} ${commandArgs}`, {stdio: 'inherit'});
 
 }

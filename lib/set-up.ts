@@ -17,10 +17,6 @@ Object.keys(packageJson.scripts)
                 packageJson.scripts[x];
     });
 
-const tsConfig = JSON.parse(tsConfigFile.replace(/^\uFEFF/, ''));
-tsConfig.compilerOptions.module = 'commonjs';
-
 fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2) + '\n');
-fs.writeFileSync('tsconfig.json', JSON.stringify(tsConfig, null, 2) + '\n');
-fs.writeFileSync('ngw.config.ts', fs.readFileSync((require.resolve('../static/ngw.config.ts'))));
-console.log('Set up went successfully!');
+fs.writeFileSync('ngw.config.ts', fs.readFileSync(require.resolve('../static/ngw.config.ts')));
+console.info('Set up went successfully!');

@@ -14,22 +14,19 @@ $ ./node_modules/.bin/ngw --set-up # run via terminal in project root
 Set up went successfully!
 ```
 For angular 5 use `npm i -D ngw@angular5`
+
 ## Usage:
-Last command installation (ngw --set-up) makes three things:
+Last command installation (ngw --set-up) makes two things:
 1) Changes scripts in package.json that starts from `ng ` to `ngw `
 2) Creates file `ngw.config.ts` in project root where you can redefine `webpack.Configuration` used by `@angular/cli`
-3) Sets `compilerOptions.module = "commonjs"` property in `tsconfig.json`
 
 So just make changes to the webpack config in appeared `ngw.config.ts`
-
-You may like to do `npm i -D @types/webpack` for better experience.
 
 ## Example
 
 #### Removes unused selectors from your CSS
 
 This little piece of code in your ngw.config [removes unused selectors from your CSS:](https://github.com/webpack-contrib/purifycss-webpack)
-
 ```typescript
 const PurifyCSSPlugin = require('purifycss-webpack');
 const path = require('path');

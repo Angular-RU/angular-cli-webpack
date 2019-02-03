@@ -1,5 +1,6 @@
 os:
   - linux
+  - windows
 language: node_js
 sudo: true
 node_js:
@@ -12,13 +13,13 @@ install:
 before_script:
   - npm i -g @angular/cli
   - set -e
-  - cp -rf "$PWD" ~/ngw
+  - cp -rf $(pwd) ~/ngw
   - cd ~
   - ng new test-project --skip-install --defaults=true
   - cd test-project
   - npm i
   - cp -rf "../ngw" "./node_modules/ngw"
-  - ln -sr "./node_modules/ngw/bin/ngw" "./node_modules/.bin/ngw"
+  - npx create-shim-or-symlink "./node_modules/ngw/bin/ngw" "./node_modules/.bin/ngw" "exec"
 script:
   - "grep 'angular.*: \"' package-lock.json | sort -u"
   - ./node_modules/.bin/ngw --set-up
